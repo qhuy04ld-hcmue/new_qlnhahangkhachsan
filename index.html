@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Khách Sạn</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="script.js" defer></script>
+</head>
+<body>
+    
+    <!-- Thanh công cụ -->
+    <nav>
+        <div class="navbar">
+            <button id="loginBtn">Đăng Nhập</button>
+            <input type="text" id="search" placeholder="Tìm phòng...">
+            <button id="payNowBtn">Thanh Toán</button>
+        </div>
+    </nav>
+    <marquee>Chào mừng quý khách, hân hạnh được phục vụ quý khách</marquee>
+    <!-- Phòng khách sạn -->
+    <section class="rooms">
+        <h2>Phòng Khách Sạn</h2>
+        <div class="room-cards">
+            <div class="room-card">
+                <img src="./img/1.jpg" alt="Phòng 1">
+                <h3>Phòng Tiêu Chuẩn</h3>
+                <p>Giá: 1,000,000 VND</p>
+                <button class="bookBtn">Đặt phòng</button>
+            </div>
+            <div class="room-card">
+                <img src="./img/2.jpg" alt="Phòng 2">
+                <h3>Phòng Cao Cấp</h3>
+                <p>Giá: 2,000,000 VND</p>
+                <button class="bookBtn">Đặt phòng</button>
+            </div>
+            <div class="room-card">
+                <img src="./img/3.jpg" alt="Phòng 2">
+                <h3>Phòng Cao Cấp</h3>
+                <p>Giá: 3,000,000 VND</p>
+                <button class="bookBtn">Đặt phòng</button>
+            </div>
+            <div class="room-card">
+                <img src="./img/4.jpg" alt="Phòng 2">
+                <h3>Phòng Cao Cấp</h3>
+                <p>Giá: 2,500,000 VND</p>
+                <button class="bookBtn">Đặt phòng</button>
+            </div>
+            <div class="room-card">
+                <img src="./img/5.jpg" alt="Phòng 2">
+                <h3>Phòng Cao Cấp</h3>
+                <p>Giá: 2,999,000 VND</p>
+                <button class="bookBtn">Đặt phòng</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Địa điểm du lịch -->
+    <section class="tourist-spots">
+        <h2>Địa Điểm Du Lịch Hấp Dẫn</h2>
+        <div class="carousel">
+            <img src="./img/a.jpg" alt="Du lịch 1">
+            <img src="./img/a1.jpg" alt="Du lịch 2">
+            <img src="./img/a2.jpg" alt="Du lịch 3">
+            <img src="./img/a3.jpg" alt="Du lịch 4">
+            <img src="./img/a4.jpg" alt="Du lịch 5">
+            <img src="./img/a5.jpg" alt="Du lịch 6">
+        </div>
+    </section>
+
+    <!-- Thanh toán -->
+    <section class="payment" id="paymentSection">
+        <h2>Thanh Toán</h2>
+        <p id="totalPrice">Tổng Tiền: 0 VND</p>
+        <button id="payBtn">Thanh Toán</button>
+    </section>
+
+</body>
+</html>
