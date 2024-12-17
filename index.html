@@ -12,12 +12,29 @@
     <!-- Thanh công cụ -->
     <nav>
         <div class="navbar">
-            <button id="loginBtn">Đăng Nhập</button>
-            <input type="text" id="search" placeholder="Tìm phòng...">
             <button id="payNowBtn">Thanh Toán</button>
+            <a href="http://localhost/pttkhdt/ks.php"><button class="viewBtn">Xem DS Khách Sạn</button></a>
+            <input type="text" id="search" placeholder="Tìm phòng...">
+            <a href="http://localhost/pttkhdt/nh.php"><button class="viewBtn">Xem DS Nhà Hàng</button></a>
+            <button id="loginBtn">Đăng Nhập</button>
+            <a href="./qlnh/index.html"><button class="viewBtn">Trang Nhà Hàng</button></a>
         </div>
     </nav>
-    <marquee>Chào mừng quý khách, hân hạnh được phục vụ quý khách</marquee>
+    <!-- 
+    <div class="view-buttons">
+        <a href="http://localhost/pttkhdt/ks.php"><button class="viewBtn">Xem Khách Sạn</button></a>
+        <a href="http://localhost/pttkhdt/nh.php"><button class="viewBtn">Xem Nhà Hàng</button></a>
+    </div>
+    -->
+    <!-- Form đăng nhập (ẩn ban đầu) -->
+    <div id="loginForm" class="login-form">
+        <h3>Đăng Nhập</h3>
+        <input type="text" id="username" placeholder="Tên đăng nhập" required>
+        <input type="password" id="password" placeholder="Mật khẩu" required>
+        <button id="submitLogin">Đăng Nhập</button>
+        <button id="closeLoginForm">Thoát</button> <!-- Nút thoát -->
+        <p id="loginMessage"></p>
+    </div>
     <!-- Phòng khách sạn -->
     <section class="rooms">
         <h2>Phòng Khách Sạn</h2>

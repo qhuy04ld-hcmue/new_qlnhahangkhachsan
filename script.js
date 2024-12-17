@@ -1,4 +1,44 @@
 // Mảng lưu thông tin phòng đã đặt
+document.getElementById('loginBtn').addEventListener('click', () => {
+    // Hiển thị form đăng nhập khi nhấn "Đăng Nhập"
+    document.getElementById('loginForm').style.display = 'block';
+});
+
+document.getElementById('submitLogin').addEventListener('click', () => {
+    // Lấy tên đăng nhập và mật khẩu
+    const username = document.getElementById('username').value;
+    const password = document.getElementById('password').value;
+
+    // Gửi yêu cầu đăng nhập đến server
+    fetch('http://localhost:3000/login', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ username, password })
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.message === 'Đăng nhập thành công!') {
+            // Nếu đăng nhập thành công, thông báo và ẩn form
+            document.getElementById('loginMessage').textContent = 'Đăng nhập thành công!';
+            document.getElementById('loginForm').style.display = 'none';
+
+            // Lưu thông tin người dùng (ví dụ: trong localStorage, hoặc session)
+            localStorage.setItem('user', JSON.stringify(data.user));
+        } else {
+            // Nếu đăng nhập thất bại, thông báo lỗi
+            document.getElementById('loginMessage').textContent = 'Tên đăng nhập hoặc mật khẩu không đúng.';
+        }
+    })
+    .catch(error => {
+        // Xử lý lỗi kết nối
+        document.getElementById('loginMessage').textContent = 'Lỗi kết nối đến server!';
+    });
+});
+
+//-------------------------------------------------------------------------------------------------------
+//------------------------------------------------------------------------------------------------------
 let bookedRooms = [];
 
 // Xử lý nút "Đặt phòng"
@@ -55,3 +95,7 @@ setInterval(() => {
     }
     carousel.scrollTo(scrollAmount, 0);
 }, 50);
+document.getElementById('closeLoginForm').addEventListener('click', () => {
+    // Ẩn form đăng nhập khi nhấn "Thoát"
+    document.getElementById('loginForm').style.display = 'none';
+});
