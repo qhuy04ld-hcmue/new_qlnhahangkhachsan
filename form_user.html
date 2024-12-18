@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Khách Sạn</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <nav>
+        <div class="navbar">
+            <button id="payNowBtn">Thanh Toán</button>
+            <a href="http://localhost/pttkhdt/ks.php"><button class="viewBtn">Xem DS Khách Sạn</button></a>
+            <input type="text" id="search" placeholder="Tìm phòng...">
+            <a href="http://localhost/pttkhdt/nh.php"><button class="viewBtn">Xem DS Nhà Hàng</button></a>    
+        </div>
+    </nav>
+
+    <!-- Form đăng nhập (ẩn ban đầu) -->
+    <div id="loginForm" class="login-form">
+        <h3>Đăng Nhập</h3>
+        <input type="text" id="username" placeholder="Tên đăng nhập" required>
+        <input type="password" id="password" placeholder="Mật khẩu" required>
+        <button id="submitLogin">Đăng Nhập</button>
+        <button id="closeLoginForm">Thoát</button> <!-- Nút thoát -->
+        <p id="loginMessage"></p>
+    </div>
+
+    <!-- Phòng khách sạn -->
+    <section class="rooms">
+        <h2>Phòng Khách Sạn</h2>
+        <div class="room-cards">
+            <div class="room-card" data-price="1000000">
+                <img src="./img/1.jpg" alt="Phòng 1">
+                <h3>Phòng Tiêu Chuẩn</h3>
+                <p>Giá: 1,000,000 VND</p>
+                <button class="bookBtn">Đặt phòng</button>
+            </div>
+            <div class="room-card" data-price="2000000">
+                <img src="./img/2.jpg" alt="Phòng 2">
+                <h3>Phòng Cao Cấp</h3>
+                <p>Giá: 2,000,000 VND</p>
+                <button class="bookBtn">Đặt phòng</button>
+            </div>
+            <div class="room-card" data-price="3000000">
+                <img src="./img/3.jpg" alt="Phòng 3">
+                <h3>Phòng Cao Cấp</h3>
+                <p>Giá: 3,000,000 VND</p>
+                <button class="bookBtn">Đặt phòng</button>
+            </div>
+            <div class="room-card" data-price="2500000">
+                <img src="./img/4.jpg" alt="Phòng 4">
+                <h3>Phòng Cao Cấp</h3>
+                <p>Giá: 2,500,000 VND</p>
+                <button class="bookBtn">Đặt phòng</button>
+            </div>
+            <div class="room-card" data-price="2999000">
+                <img src="./img/5.jpg" alt="Phòng 5">
+                <h3>Phòng Cao Cấp</h3>
+                <p>Giá: 2,999,000 VND</p>
+                <button class="bookBtn">Đặt phòng</button>
+            </div>
+            <div class="room-card" data-price="2900000">
+                <img src="./img/6.jpg" alt="Phòng 6">
+                <h3>Phòng Cao Cấp</h3>
+                <p>Giá: 2,900,000 VND</p>
+                <button class="bookBtn">Đặt phòng</button>
+            </div>
+            <div class="room-card" data-price="2999000">
+                <img src="./img/a.jpg" alt="Phòng 7">
+                <h3>Phòng Cao Cấp</h3>
+                <p>Giá: 2,999,000 VND</p>
+                <button class="bookBtn">Đặt phòng</button>
+            </div>
+            <div class="room-card" data-price="2999000">
+                <img src="./img/a1.jpg" alt="Phòng 8">
+                <h3>Phòng Cao Cấp</h3>
+                <p>Giá: 2,999,000 VND</p>
+                <button class="bookBtn">Đặt phòng</button>
+            </div>
+            <div class="room-card" data-price="2999000">
+                <img src="./img/a2.jpg" alt="Phòng 9">
+                <h3>Phòng Cao Cấp</h3>
+                <p>Giá: 2,999,000 VND</p>
+                <button class="bookBtn">Đặt phòng</button>
+            </div>
+            <div class="room-card" data-price="500000">
+                <img src="./img/a3.jpg" alt="Phòng 10">
+                <h3>Phòng Thường</h3>
+                <p>Giá: 500,000 VND</p>
+                <button class="bookBtn">Đặt phòng</button>
+            </div>
+            <div class="room-card" data-price="600000">
+                <img src="./img/a4.jpg" alt="Phòng 11">
+                <h3>Phòng Thường</h3>
+                <p>Giá: 600,000 VND</p>
+                <button class="bookBtn">Đặt phòng</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Địa điểm du lịch -->
+    <section class="tourist-spots">
+        <h2>Địa Điểm Du Lịch Hấp Dẫn</h2>
+        <div class="carousel">
+            <img src="./img/a.jpg" alt="Du lịch 1">
+            <img src="./img/a1.jpg" alt="Du lịch 2">
+            <img src="./img/a2.jpg" alt="Du lịch 3">
+            <img src="./img/a3.jpg" alt="Du lịch 4">
+            <img src="./img/a4.jpg" alt="Du lịch 5">
+            <img src="./img/a5.jpg" alt="Du lịch 6">
+        </div>
+    </section>
+
+    <!-- Thanh toán -->
+    <section class="payment" id="paymentSection">
+        <h2>Thanh Toán</h2>
+        <p id="totalPrice">Tổng Tiền: 0 VND</p>
+        <button id="payBtn">Thanh Toán</button>
+    </section>
+
+    <script>
+        let totalAmount = 0;
+
+        // Lấy các nút đặt phòng và thanh toán
+        const bookBtns = document.querySelectorAll('.bookBtn');
+        const totalPriceEl = document.getElementById('totalPrice');
+        const payBtn = document.getElementById('payBtn');
+        const payNowBtn = document.getElementById('payNowBtn');
+
+        // Sự kiện khi người dùng nhấn "Đặt phòng"
+        bookBtns.forEach(btn => {
+            btn.addEventListener('click', function() {
+                const roomPrice = parseInt(this.closest('.room-card').dataset.price);
+                totalAmount += roomPrice;
+                totalPriceEl.textContent = `Tổng Tiền: ${totalAmount.toLocaleString()} VND`;
+            });
+        });
+
+        // Sự kiện khi người dùng nhấn "Thanh Toán"
+        payBtn.addEventListener('click', function() {
+            alert('Đã thanh toán thành công!');
+            // Gửi tổng số tiền thanh toán tới server (ở đây tôi giả sử bạn xử lý bằng PHP hoặc một backend khác)
+            fetch('save_payment.php', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ totalAmount: totalAmount })
+            })
+            .then(response => response.json())
+            .then(data => {
+                console.log('Payment data saved:', data);
+            })
+            .catch(error => {
+                console.error('Error saving payment data:', error);
+            });
+
+            // Reset tổng tiền về 0
+            totalAmount = 0;
+            totalPriceEl.textContent = 'Tổng Tiền: 0 VND';
+        });
+
+        // Tìm kiếm phòng khách sạn
+        const searchInput = document.getElementById('search');
+        searchInput.addEventListener('input', function() {
+            const query = searchInput.value.toLowerCase();
+            const roomCards = document.querySelectorAll('.room-card');
+
+            roomCards.forEach(card => {
+                const roomName = card.querySelector('h3').textContent.toLowerCase();
+                if (roomName.includes(query)) {
+                    card.style.display = 'block';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        });
+
+        // Xử lý thanh toán ngay
+        payNowBtn.addEventListener('click', function() {
+            if (totalAmount > 0) {
+                alert('Đã thanh toán thành công ngay lập tức!');
+                totalAmount = 0;
+                totalPriceEl.textContent = 'Tổng Tiền: 0 VND';
+            } else {
+                alert('Không có phòng nào đã được đặt!');
+            }
+        });
+    </script>
+</body>
+</html>
+
+
+<!-- 
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Khách Sạn</title>
+    <link rel="stylesheet" href="styles.css">
+    </script>
+</head>
+<body>
+    <nav>
+        <div class="navbar">
+            <button id="payNowBtn">Thanh Toán</button>
+            <a href="http://localhost/pttkhdt/ks.php"><button class="viewBtn">Xem DS Khách Sạn</button></a>
+            <input type="text" id="search" placeholder="Tìm phòng...">
+            <a href="http://localhost/pttkhdt/nh.php"><button class="viewBtn">Xem DS Nhà Hàng</button></a>    
+        </div>
+    </nav>
+
+    <div id="loginForm" class="login-form">
+        <h3>Đăng Nhập</h3>
+        <input type="text" id="username" placeholder="Tên đăng nhập" required>
+        <input type="password" id="password" placeholder="Mật khẩu" required>
+        <button id="submitLogin">Đăng Nhập</button>
+        <button id="closeLoginForm">Thoát</button> 
+        <p id="loginMessage"></p>
+    </div>
+
+    <section class="rooms">
+        <h2>Phòng Khách Sạn</h2>
+        <div class="room-cards">
+            <div class="room-card">
+                <img src="./img/1.jpg" alt="Phòng 1">
+                <h3>Phòng Tiêu Chuẩn</h3>
+                <p>Giá: 1,000,000 VND</p>
+                <button class="bookBtn">Đặt phòng</button>
+            </div>
+            <div class="room-card">
+                <img src="./img/2.jpg" alt="Phòng 2">
+                <h3>Phòng Cao Cấp</h3>
+                <p>Giá: 2,000,000 VND</p>
+                <button class="bookBtn">Đặt phòng</button>
+            </div>
+            <div class="room-card">
+                <img src="./img/3.jpg" alt="Phòng 2">
+                <h3>Phòng Cao Cấp</h3>
+                <p>Giá: 3,000,000 VND</p>
+                <button class="bookBtn">Đặt phòng</button>
+            </div>
+            <div class="room-card">
+                <img src="./img/4.jpg" alt="Phòng 2">
+                <h3>Phòng Cao Cấp</h3>
+                <p>Giá: 2,500,000 VND</p>
+                <button class="bookBtn">Đặt phòng</button>
+            </div>
+            <div class="room-card">
+                <img src="./img/5.jpg" alt="Phòng 2">
+                <h3>Phòng Cao Cấp</h3>
+                <p>Giá: 2,999,000 VND</p>
+                <button class="bookBtn">Đặt phòng</button>
+            </div>
+        </div>
+    </section>
+
+
+    <section class="tourist-spots">
+        <h2>Địa Điểm Du Lịch Hấp Dẫn</h2>
+        <div class="carousel">
+            <img src="./img/a.jpg" alt="Du lịch 1">
+            <img src="./img/a1.jpg" alt="Du lịch 2">
+            <img src="./img/a2.jpg" alt="Du lịch 3">
+            <img src="./img/a3.jpg" alt="Du lịch 4">
+            <img src="./img/a4.jpg" alt="Du lịch 5">
+            <img src="./img/a5.jpg" alt="Du lịch 6">
+        </div>
+    </section>
+
+
+    <section class="payment" id="paymentSection">
+        <h2>Thanh Toán</h2>
+        <p id="totalPrice">Tổng Tiền: 0 VND</p>
+        <button id="payBtn">Thanh Toán</button>
+    </section>
+
+</body>
+</html>
+-->

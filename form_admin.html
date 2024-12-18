@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quản Lý Khách Sạn</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f9f9f9;
+        }
+        .navbar {
+            display: flex;
+            justify-content: space-between ;
+            padding: 10px;
+            background-color: #333;
+            color: white;
+        }
+        button {
+            background-color: #4CAF50;
+            border: none;
+            color: white;
+            padding: 10px 20px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 20px auto;
+        }
+
+        h2 {
+            text-align: center;
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        form {
+            background: #fff;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 30px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        form h3 {
+            margin-bottom: 15px;
+            color: #555;
+        }
+
+        form label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+            color: #555;
+        }
+
+        form input, form select, form textarea {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            box-sizing: border-box;
+            font-size: 14px;
+        }
+
+        form button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        form button:hover {
+            background-color: #45a049;
+        }
+
+        .dropdown {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .dropdown label {
+            margin-bottom: 10px;
+        }
+
+        .error {
+            color: red;
+            font-size: 14px;
+            margin-bottom: 15px;
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="navbar">
+            <button id="payNowBtn">Thanh Toán</button>
+            <a href="http://localhost/pttkhdt/ks.php"><button class="viewBtn">Xem DS Khách Sạn</button></a>
+            <a href="http://localhost/pttkhdt/nh.php"><button class="viewBtn">Xem DS Nhà Hàng</button></a>
+            <a href="http://localhost/pttkhdt/dsnd.php"><button class="viewBtn">Xem DS người dùng</button></a>
+            <a href="./qlnh/index.html"><button class="viewBtn">Trang Nhà Hàng</button></a>
+        </div>
+    </nav>
+
+    <div class="container">
+        <h2>Quản Lý Khách Sạn</h2>
+
+        <!-- Form Thêm Người Dùng -->
+        <form action="them_nguoi_dung.php" method="POST">
+            <h3>Thêm Người Dùng</h3>
+            <label for="ten_dang_nhap">Tên Đăng Nhập</label>
+            <input type="text" id="ten_dang_nhap" name="ten_dang_nhap" required>
+
+            <label for="mat_khau">Mật Khẩu</label>
+            <input type="text" id="mat_khau" name="mat_khau" required>
+
+            <label for="so_dien_thoai">Số Điện Thoại</label>
+            <input type="text" id="so_dien_thoai" name="so_dien_thoai">
+
+            <label for="vai_tro">Vai Trò</label>
+            <select id="vai_tro" name="vai_tro">
+                <option value="khach_hang">Khách Hàng</option>
+                <option value="nhan_vien">Nhân Viên</option>
+                <option value="quan_tri">Quản Trị</option>
+            </select>
+
+            <button type="submit">Thêm Người Dùng</button>
+        </form>
+
+        <!-- Form Thêm Món Ăn -->
+        <form action="them_mon_an.php" method="POST">
+            <h3>Thêm Món Ăn</h3>
+            <label for="ten_mon_an">Tên Món Ăn</label>
+            <input type="text" id="ten_mon_an" name="ten_mon_an" required>
+
+            <label for="mo_ta_mon_an">Mô Tả</label>
+            <textarea id="mo_ta_mon_an" name="mo_ta"></textarea>
+
+            <label for="gia">Giá</label>
+            <input type="number" id="gia" name="gia" required>
+
+            <label for="ma_thuc_don">Thực Đơn</label>
+            <select id="ma_thuc_don" name="ma_thuc_don">
+                <?php
+                // PHP Code to Fetch Dropdown Data
+                $conn = new mysqli("localhost", "root", "", "qlks");
+                $result = $conn->query("SELECT ma_thuc_don, ten FROM ThucDon");
+                while ($row = $result->fetch_assoc()) {
+                    echo "<option value='" . $row['ma_thuc_don'] . "'>" . $row['ten'] . "</option>";
+                }
+                $conn->close();
+                ?>
+            </select>
+
+            <button type="submit">Thêm Món Ăn</button>
+        </form>
+
+        <!-- Form Thêm Nhà Hàng -->
+        <form action="them_nha_hang.php" method="POST">
+            <h3>Thêm Nhà Hàng</h3>
+            <label for="ten_nha_hang">Tên Nhà Hàng</label>
+            <input type="text" id="ten_nha_hang" name="ten" required>
+
+            <label for="mo_ta_nha_hang">Mô Tả</label>
+            <textarea id="mo_ta_nha_hang" name="mo_ta"></textarea>
+
+            <label for="so_dien_thoai_nh">Số Điện Thoại</label>
+            <input type="text" id="so_dien_thoai_nh" name="so_dien_thoai">
+
+            <label for="ma_khach_san">Khách Sạn</label>
+            <select id="ma_khach_san" name="ma_khach_san">
+                <?php
+                // PHP Code to Fetch Dropdown Data
+                $conn = new mysqli("localhost", "root", "", "qlks");
+                $result = $conn->query("SELECT ma_khach_san, ten FROM KhachSan");
+                while ($row = $result->fetch_assoc()) {
+                    echo "<option value='" . $row['ma_khach_san'] . "'>" . $row['ten'] . "</option>";
+                }
+                $conn->close();
+                ?>
+            </select>
+
+            <button type="submit">Thêm Nhà Hàng</button>
+        </form>
+
+        <!-- Form Thêm Khách Sạn -->
+        <form action="them_khach_san.php" method="POST">
+            <h3>Thêm Khách Sạn</h3>
+            <label for="ten_khach_san">Tên Khách Sạn</label>
+            <input type="text" id="ten_khach_san" name="ten" required>
+
+            <label for="dia_chi">Địa Chỉ</label>
+            <textarea id="dia_chi" name="dia_chi"></textarea>
+
+            <label for="so_dien_thoai_ks">Số Điện Thoại</label>
+            <input type="text" id="so_dien_thoai_ks" name="so_dien_thoai">
+
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email">
+
+            <label for="mo_ta_ks">Mô Tả</label>
+            <textarea id="mo_ta_ks" name="mo_ta"></textarea>
+
+            <button type="submit">Thêm Khách Sạn</button>
+        </form>
+    </div>
+</body>
+</html>
+
+
+<!--
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Khách Sạn</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="./backend/script.js" defer></script>
+</head>
+<body>
+
+    <nav>
+        <div class="navbar">
+            <button id="payNowBtn">Thanh Toán</button>
+            <a href="http://localhost/pttkhdt/ks.php"><button class="viewBtn">Xem DS Khách Sạn</button></a>
+            <input type="text" id="search" placeholder="Tìm phòng...">
+            <a href="http://localhost/pttkhdt/nh.php"><button class="viewBtn">Xem DS Nhà Hàng</button></a>
+
+            <a href="./qlnh/index.html"><button class="viewBtn">Trang Nhà Hàng</button></a>
+        </div>
+    </nav>
+ 
+    
+    <div id="loginForm" class="login-form">
+        <h3>Đăng Nhập</h3>
+        <input type="text" id="username" placeholder="Tên đăng nhập" required>
+        <input type="password" id="password" placeholder="Mật khẩu" required>
+        <button id="submitLogin">Đăng Nhập</button>
+        <button id="closeLoginForm">Thoát</button> 
+        <p id="loginMessage"></p>
+    </div>
+
+    <section class="rooms">
+        <h2>Phòng Khách Sạn</h2>
+        <div class="room-cards">
+            <div class="room-card">
+                <img src="./img/1.jpg" alt="Phòng 1">
+                <h3>Phòng Tiêu Chuẩn</h3>
+                <p>Giá: 1,000,000 VND</p>
+                <button class="bookBtn">Đặt phòng</button>
+            </div>
+            <div class="room-card">
+                <img src="./img/2.jpg" alt="Phòng 2">
+                <h3>Phòng Cao Cấp</h3>
+                <p>Giá: 2,000,000 VND</p>
+                <button class="bookBtn">Đặt phòng</button>
+            </div>
+            <div class="room-card">
+                <img src="./img/3.jpg" alt="Phòng 2">
+                <h3>Phòng Cao Cấp</h3>
+                <p>Giá: 3,000,000 VND</p>
+                <button class="bookBtn">Đặt phòng</button>
+            </div>
+            <div class="room-card">
+                <img src="./img/4.jpg" alt="Phòng 2">
+                <h3>Phòng Cao Cấp</h3>
+                <p>Giá: 2,500,000 VND</p>
+                <button class="bookBtn">Đặt phòng</button>
+            </div>
+            <div class="room-card">
+                <img src="./img/5.jpg" alt="Phòng 2">
+                <h3>Phòng Cao Cấp</h3>
+                <p>Giá: 2,999,000 VND</p>
+                <button class="bookBtn">Đặt phòng</button>
+            </div>
+        </div>
+    </section>
+
+    <section class="tourist-spots">
+        <h2><center>Địa Điểm Du Lịch Hấp Dẫn</center></h2>
+        <div class="carousel">
+            <img src="./img/a.jpg" alt="Du lịch 1">
+            <img src="./img/a1.jpg" alt="Du lịch 2">
+            <img src="./img/a2.jpg" alt="Du lịch 3">
+            <img src="./img/a3.jpg" alt="Du lịch 4">
+            <img src="./img/a4.jpg" alt="Du lịch 5">
+            <img src="./img/a5.jpg" alt="Du lịch 6">
+        </div>
+    </section>
+
+</body>
+</html>
+-->
